@@ -1,19 +1,20 @@
 import React from 'react'
 
-const Selecao = () => {
+const Selecao = ({id, lista }) => {
   const [inputValor, setInputValor] = React.useState(null);
   
   return (
     <div>
       <input 
+      list={lista}
       type="text"
       placeholder="Digite o nome do jogador:"
       value={inputValor}
       onChange={event => setInputValor(event.target.value)}
       />
-      <ul>
+      <datalist id={lista}>
         
-      </ul>
+      </datalist>
     </div>
   )
 }

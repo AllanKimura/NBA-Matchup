@@ -33,7 +33,7 @@ export const GlobalStorage = ({ children }) => {
     }, []);
     
     return (
-        <GlobalContext.Provider value={{infoNBA, setInfoNBA}}>
+        <GlobalContext.Provider value={{infoNBA, setInfoNBA, erro}}>
             {children}
         </GlobalContext.Provider>
     )

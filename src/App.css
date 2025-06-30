@@ -1,6 +1,28 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
+h1.titulo{
+  font-size: 48px;
+  font-family: Inter;
+  line-height: 1.1;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 80px auto;
+}
+
+input{
+  width: 350px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #6B7280;
+  border: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+input:focus{
+  background-color: #F5F5F5;
+  border: #B4BCD6 2px;
+  outline: none;
+}

@@ -12,17 +12,24 @@ h1.titulo{
 }
 
 input{
-  width: 350px;
+  font-family: Inter;
+  font-size: 24px;
+  text-align: center;
+  width: 320px;
   padding: 8px 16px;
   border-radius: 5px;
-  color: #6B7280;
+  color: #1b1b1d;
   border: none;
-  font-size: 18px;
-  transition: 0.3s;
 }
 
 input:focus{
   background-color: #F5F5F5;
   border: #B4BCD6 2px;
   outline: none;
+}
+
+label{
+  font-family: Inter;
+  font-size: 20px;
+  color: #FFF
 }

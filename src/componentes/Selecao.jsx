@@ -44,13 +44,16 @@ const Selecao = ({id}) => {
       type="text"
       placeholder="Digite o nome do jogador:"
       value={inputValor}
+      autoComplete="off"
       onChange={autoComplete}
       />
+
       <ul className="listComplete">
         {jogadores && jogadores.map((j) => {
           return <li key={j} onClick={clickJogador}>{j}</li>
         })}
       </ul>
+
     </div>
   )
 }

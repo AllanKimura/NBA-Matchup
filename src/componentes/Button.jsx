@@ -1,7 +1,7 @@
 import React from 'react'
-import { GlobalContext } from '../GlobalContext.jsx';
+import { GlobalContext } from '../hooks/GlobalContext.jsx';
 
-const Button = ({j1, setJ1, j2, setJ2, duelo, setDuelo, children}) => {
+const Button = ({setJ1, setJ2, setDuelo, children}) => {
 
     const global = React.useContext(GlobalContext);
     function envia(event){

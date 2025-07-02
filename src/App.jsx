@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { GlobalStorage } from './GlobalContext.jsx';
+import { GlobalStorage } from './hooks/GlobalContext.jsx';
 import Jogador from './componentes/Jogador.jsx';
 import Selecao from './componentes/Selecao.jsx';
 import Button from './componentes/Button.jsx';
@@ -11,6 +11,8 @@ function App() {
   const [jogador1, setJogador1] = React.useState([]);
   const [jogador2, setJogador2] = React.useState([]);
   const [duelo, setDuelo] = React.useState(false);
+
+
   
   return (
     <GlobalStorage>
@@ -18,19 +20,19 @@ function App() {
       <form>
         <div>
           <Jogador />
-          <Stats />
+          {duelo === true && <Stats j={jogador1} />}
           <Selecao id="1"/>
         </div>
         <div>
           <Jogador />
-          <Stats />
+          {duelo === true && <Stats j={jogador2} />}
           <Selecao id="2"/>
         </div>
         <label htmlFor="opcao">Selecione o tipo de duelo:</label>
         <select name="opcao" id="opcao">
-          <option value="ataque">Estatísticas de ataque</option>
-          <option value="defesa">Estatísticas de defesa</option>
-          <option value="ia">Análise da IA</option>
+          <option value="op1">Estatísticas de ataque</option>
+          <option value="op2">Estatísticas de defesa</option>
+          <option value="op3">Análise da IA</option>
         </select>
         <Button j1={jogador1} setJ1={setJogador1} j2={jogador2} setJ2={setJogador2} setDuelo={setDuelo}>Enviar</Button>
       </form>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalContext } from '../GlobalContext.jsx';
+import { GlobalContext } from '../hooks/GlobalContext.jsx';
 
 const Selecao = ({id}) => {
   const [inputValor, setInputValor] = React.useState('');

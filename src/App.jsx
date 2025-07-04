@@ -12,8 +12,6 @@ function App() {
   const [jogador2, setJogador2] = React.useState([]);
   const [duelo, setDuelo] = React.useState(false);
 
-
-  
   return (
     <GlobalStorage>
       <h1 className="titulo">NBA Matchup!</h1>
@@ -34,7 +32,7 @@ function App() {
           <option value="op2">Estatísticas de defesa</option>
           <option value="op3">Análise da IA</option>
         </select>
-        <Button j1={jogador1} setJ1={setJogador1} j2={jogador2} setJ2={setJogador2} setDuelo={setDuelo}>Enviar</Button>
+        <Button j1={jogador1} setJ1={setJogador1} j2={jogador2} setJ2={setJogador2} duelo={duelo} setDuelo={setDuelo}>Enviar</Button>
       </form>
     </GlobalStorage>
   )

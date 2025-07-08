@@ -7,7 +7,6 @@ import Button from './componentes/Button.jsx';
 import Stats from './componentes/Stats.jsx';
 
 function App() {
-  const [opcao, setOpcao] = React.useState(null);
   const [jogador1, setJogador1] = React.useState([]);
   const [jogador2, setJogador2] = React.useState([]);
   const [duelo, setDuelo] = React.useState(false);
@@ -28,9 +27,11 @@ function App() {
         </div>
         <label htmlFor="opcao">Selecione o tipo de duelo:</label>
         <select name="opcao" id="opcao">
-          <option value="op1">Estatísticas de ataque</option>
-          <option value="op2">Estatísticas de defesa</option>
-          <option value="op3">Análise da IA</option>
+          <option value="op1">Ataque</option>
+          <option value="op2">Defesa</option>
+          <option value="op3">Geral</option>
+          <option value="op4">Análise da IA</option>
+
         </select>
         <Button j1={jogador1} setJ1={setJogador1} j2={jogador2} setJ2={setJogador2} duelo={duelo} setDuelo={setDuelo}>Enviar</Button>
       </form>

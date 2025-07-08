@@ -5,7 +5,7 @@ const Button = ({j1, j2, setJ1, setJ2, duelo, setDuelo, children}) => {
 
     const global = React.useContext(GlobalContext);
     const [result, setResult] = React.useState([]); //Array com o vencedor de cada estatística
-    const [stats, setStats] = React.useState([]); //Array com descrição de cada estatística
+    const [descStats, setDescStats] = React.useState([]); //Array com descrição de cada estatística
     const [j1Stats, setJ1Stats] = React.useState([]);
     const [j2Stats, setJ2Stats] = React.useState([]);
     const [opcao, setOpcao] = React.useState([]); //Opção escolhida no input
@@ -44,24 +44,49 @@ const Button = ({j1, j2, setJ1, setJ2, duelo, setDuelo, children}) => {
         }
     }
 
+    //Comparar estatísticas
+    function compara(stats1, stats2, vencedores){
+        for(let i in stats1){
+            if(stats1[i] > stats2[i]){
+                vencedores.push('j1');
+            } else if(stats2[i] > stats1[i]){
+                vencedores.push('j2');
+            } else{
+                vencedores.push('empate');
+            }
+        }
+        setResult(vencedores);
+    }
+
     //Se a validação tiver sucesso compara as estatísticas
     //op1 stats ofensivas, op2 stats defensivas, op3 análise da ia
     React.useEffect(() => {
         let stats1 = [];
         let stats2 = [];
+        let vencedores = [];
 
         if(duelo === false) return;
         
         switch (opcao) {
+
             case 'op1':
-                setJ1Stats(stats1.push(j1.Assists, j1.ThreePointersPercentage, j1.FreeThrowsPercentage, j1.FieldGoalsPercentage, j1.Points)); 
-                setJ2Stats(stats2.push(j2.Assists, j2.ThreePointersPercentage, j2.FreeThrowsPercentage, j2.FieldGoalsPercentage, j2.Points)); 
-                console.log(stats1);
-                console.log(stats2);
+                setDescStats(['Assistências', 'Rebotes Ofensivos', 'Duplos Duplos', 'Triplos Duplos', '% de 2 Pontos', '% de 3 Pontos', '% de Lances Livres', '% de Arremessos Acertados', 'Total de Pontos']);
+                stats1.push(j1.Assists, j1.OffensiveRebounds, j1.DoublesDoubles, j1.TripleDoubles, j1.TwoPointersPercentage, j1.ThreePointersPercentage, j1.FreeThrowsPercentage, j1.FieldGoalsPercentage, j1.Points);
+                stats1.push(j2.Assists, j2.OffensiveRebounds, j2.DoublesDoubles, j2.TripleDoubles, j2.TwoPointersPercentage, j2.ThreePointersPercentage, j2.FreeThrowsPercentage, j2.FieldGoalsPercentage, j2.Points);
+                setJ1Stats(stats1); 
+                setJ2Stats(stats2); 
+                compara(stats1, stats2, vencedores);
                 break;
+
             case 'op2':
-                
+                setDescStats(['Bloqueios', 'Rebotes defensivos', 'Bolas roubadas', '% de Arremessos', 'Total de Pontos']);
+                stats1.push(j1.BlockedShots, j1.DefensiveRebounds, j1.Steals);
+                stats2.push(j2.Assists, j2.ThreePointersPercentage, j2.FreeThrowsPercentage, j2.FieldGoalsPercentage, j2.Points);
+                setJ1Stats(stats1); 
+                setJ2Stats(stats2); 
+                compara(stats1, stats2, vencedores);
                 break;
+
             case 'op3':
                 
                 break;
@@ -70,7 +95,7 @@ const Button = ({j1, j2, setJ1, setJ2, duelo, setDuelo, children}) => {
                 global.setErro("Erro ao selecionar opção");
                 break;
         }
-    }, [duelo])
+    }, [duelo, j1, j2]);
 
     return (
         <>
